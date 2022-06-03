@@ -156,6 +156,12 @@ def main():
         help()
     elif argv[1] == "-h" or argv[1] == "help":
         help()
+    elif argv[1] == "-i" or argv[1] == "install":
+        if len(argv) == 3:
+            install_pkg(argv[2])
+        else:
+            pkg = input("package name: ")
+            install_pkg(pkg)
     else:
         pkginfo = check_pkg()
         if pkginfo is not None:
@@ -182,12 +188,6 @@ def main():
                 major(pkginfo)
             elif argv[1] == "-pa" or argv[1] == "patch":
                 patch(pkginfo)
-            elif argv[1] == "-i" or argv[1] == "install":
-                if len(argv) == 3:
-                    install_pkg(argv[2])
-                else:
-                    pkg = input("package name: ")
-                    install_pkg(pkg)
             else:
                 print_error("Unknown command: " + argv[1])
                 help()
