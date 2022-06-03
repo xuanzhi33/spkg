@@ -160,8 +160,8 @@ def main():
         if len(argv) == 3:
             install_pkg(argv[2])
         else:
-            pkg = input("package name: ")
-            install_pkg(pkg)
+            pkgname = input("package name: ")
+            install_pkg(pkgname)
     else:
         pkginfo = check_pkg()
         if pkginfo is not None:
