@@ -6,9 +6,9 @@ Language: [English](https://github.com/xuanzhi33/spkg/blob/master/README.md) |
 
 ## Introduction
 
-SPKG (Simple Packager) - A command line tools for setuping and uploading python packages.
+SPKG (Simple Packager) - A command line tools for setting up and uploading python packages.
 
-SPKG (Simple Packager) - 一个简单的命令行工具，用于快速的打包和上传python包到pypi。
+一个简单的命令行工具，用于快速的打包和上传python包到pypi。
 
 ## Install
 

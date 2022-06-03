@@ -9,7 +9,7 @@ setup(
     author="xuanzhi33",
     author_email="xuanzhi33@qq.com",
     url="https://github.com/xuanzhi33/spkg",
-    description="Simple Packager - A command line tools for setuping and uploading python packages",
+    description="Simple Packager - A command line tools for setting up and uploading python packages",
     long_description=long_description,
     long_description_content_type="text/markdown",
     classifiers=[
