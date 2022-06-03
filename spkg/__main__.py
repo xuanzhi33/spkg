@@ -100,8 +100,8 @@ def setver(ver, info):
         print_error("Failed to set package version.")
 
 def pkg_info(info):
-    output("Package name:", info[0])
-    output("Package version:", info[1])
+    output("Package name: " + info[0])
+    output("Package version: " + info[1])
 
 def pkg():
     clear()
