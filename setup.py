@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name="spkg",
-    version="0.5.1",
+    version="0.5.2",
     author="xuanzhi33",
     author_email="xuanzhi33@qq.com",
     url="https://github.com/xuanzhi33/spkg",
