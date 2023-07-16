@@ -42,7 +42,8 @@ def upload():
 
 def setup():
     output("Setting up package...")
-    run_cmd("python3 setup.py sdist")
+    python = sys.executable
+    run_cmd(python + " setup.py sdist")
     print_done("Setup successfully.")
 
 def clear():
@@ -148,7 +149,13 @@ def check_pkg():
     return info
 
 def install_pkg(pkg):
-    run_cmd("pip3 install --upgrade " + pkg)
+    python = sys.executable
+    run_cmd(python + " -m pip install --upgrade " + pkg)
+
+def install_pkg_using_mirror(pkg):
+    mirror = "https://pypi.tuna.tsinghua.edu.cn/simple"
+    python = sys.executable
+    run_cmd(python + " -m pip install --upgrade " + pkg + " -i " + mirror)
 
 def main():
     argv = sys.argv
@@ -159,6 +166,8 @@ def main():
     elif argv[1] == "-i" or argv[1] == "install":
         if len(argv) == 3:
             install_pkg(argv[2])
+        elif len(argv) == 4:
+            install_pkg_using_mirror(argv[3])
         else:
             pkgname = input("package name: ")
             install_pkg(pkgname)
