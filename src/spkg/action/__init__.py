@@ -57,4 +57,4 @@ class Action:
         
         if open_vscode:
             self.log.info("Opening in Visual Studio Code.")
-            run("code .", shell=True)
+            run(f"code {name}", shell=True)
