@@ -1,3 +1,3 @@
-/.DS_Store
 /dist
-/spkg.egg-info
+__pycache__
+/test
