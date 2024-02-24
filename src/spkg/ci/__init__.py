@@ -1,4 +1,4 @@
-from os import path
+from os import path, makedirs
 
 WORKFLOW = """\
 name: publish
@@ -34,15 +34,19 @@ jobs:
       uses: pypa/gh-action-pypi-publish@release/v1
 """
 
+CI_DIR = path.join(".github", "workflows")
+CI_NAME = "publish.yml"
+
 class CI:
     def is_exist(self):
-        return path.exists(".github/workflows/publish.yml")
-
+        return path.exists(path.join(CI_DIR, CI_NAME))
     def create(self, name, in_project):
-        ci_path = path.join(".github", "workflows", "publish.yml")
+        cur_ci_dir = CI_DIR
         if not in_project:
-            ci_path = path.join(name, ci_path)
+            cur_ci_dir = path.join(name, cur_ci_dir)
+        makedirs(cur_ci_dir, exist_ok=True)
+        ci_file = path.join(cur_ci_dir, CI_NAME)
 
-        with open(ci_path, "w", encoding="utf-8") as f:
+        with open(ci_file, "w", encoding="utf-8") as f:
             f.write(WORKFLOW.format(name=name))
 
