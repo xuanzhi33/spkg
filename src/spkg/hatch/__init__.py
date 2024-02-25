@@ -9,6 +9,10 @@ class Hatch_cli:
     def hatch(self, args):
         cmd_list = [PYTHON_PATH, "-m", "hatch"] + args
         subprocess.run(cmd_list)
+    def hatch_output(self, args):
+        cmd_list = [PYTHON_PATH, "-m", "hatch"] + args
+        result = subprocess.run(cmd_list, capture_output=True, text=True)
+        return result.stdout
 
     def config(self, key, value):
         self.hatch(["config", "set", key, value])
@@ -18,6 +22,8 @@ class Hatch_cli:
         self.config_restore()
         self.config("template.licenses.default", "['GPL-3.0-only']")
         self.config("template.plugins.default.tests", "false")
+    def metadata(self, field):
+        return self.hatch_output(["project", "metadata", field])
     def clean(self):
         self.hatch(["clean"])
     def build(self):
@@ -33,8 +39,8 @@ class Hatch_cli:
     def new_cli(self, name):
         self.hatch(["new", "--cli", name])
     def info(self):
-        result = subprocess.run([PYTHON_PATH, "-m", "hatch", "project", "metadata"], capture_output=True, text=True)
-        info_dict = json.loads(result.stdout)
+        result = self.hatch_output(["project", "metadata"])
+        info_dict = json.loads(result)
         deps = info_dict['dependencies']
         output = f"""{info_dict['name']}
 Description:

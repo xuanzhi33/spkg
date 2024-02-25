@@ -85,9 +85,21 @@ def publish():
     action.release()
 
 @spkg.command()
+@click.option("--create", "-c", is_flag=True, help="Create GitHub Actions Workflow for this package.")
+def ci(create):
+    """
+    Manage Publish GitHub Actions Workflow for this package.
+    """
+    if create:
+        action.create_ci()
+    else:
+        action.need_option("ci")
+
+
+@spkg.command()
 @click.argument("name")
 @click.option("--cli/--no-cli", "-c", default=False, help="Create package with Command Line Interface.")
-@click.option("--ci/--no-ci", "-i", default=False, help="Create Publish Workflow for GitHub Actions.")
+@click.option("--ci/--no-ci", "-a", default=False, help="Create Publish Workflow for GitHub Actions.")
 @click.option("--open/--no-open", "-o", default=False, help="Open in Visual Studio Code when finished.")
 def new(name, cli, ci, open):
     """

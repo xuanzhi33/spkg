@@ -26,6 +26,12 @@ class Action:
             self.log.done("Cleaned dist folder.")
         self.hatch.build()
         self.log.done("Built package.")
+    
+    def create_ci(self):
+        name = self.hatch.metadata("name")
+        self.log.info(f"Generating publish.yml for {name}.")
+        self.ci.create(name, in_project=True)
+        self.log.done("Created publish.yml successfully.")
 
     def release(self):
         self.hatch.publish()
