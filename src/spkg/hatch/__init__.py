@@ -41,7 +41,10 @@ class Hatch_cli:
     def info(self):
         result = self.hatch_output(["project", "metadata"])
         info_dict = json.loads(result)
-        deps = info_dict['dependencies']
+        if 'dependencies' in info_dict:
+            deps = info_dict['dependencies']
+        else:
+            deps = ["None"]
         output = f"""{info_dict['name']}
 Description:
 {info_dict['description']}
