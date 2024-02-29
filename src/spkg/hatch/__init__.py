@@ -23,7 +23,8 @@ class Hatch_cli:
         self.config("template.licenses.default", "['GPL-3.0-only']")
         self.config("template.plugins.default.tests", "false")
     def metadata(self, field):
-        return self.hatch_output(["project", "metadata", field])
+        result = self.hatch_output(["project", "metadata", field])
+        return result[:-1]
     def clean(self):
         self.hatch(["clean"])
     def build(self):
