@@ -6,8 +6,6 @@ name: publish
 on:
   push:
     branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
 
 jobs:
   build-and-publish:
