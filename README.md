@@ -28,3 +28,4 @@ Type `spkg [COMMAND] -h` to see the help message for a specific command.
 ## License
 
 `spkg` is distributed under the terms of the [GPL-3.0-only](https://spdx.org/licenses/GPL-3.0-only.html) license.
+
